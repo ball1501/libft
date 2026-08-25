@@ -58,7 +58,7 @@ Custom non-standard utility functions for strings and file descriptors:
 * **String Manipulation:** `ft_substr`, `ft_strjoin`, `ft_strtrim`, `ft_split`, `ft_itoa`, `ft_strmapi`, `ft_striteri`
 * **File Descriptor Output:** `ft_putchar_fd`, `ft_putstr_fd`, `ft_putendl_fd`, `ft_putnbr_fd`
 
-### Bonus Part - Linked List Utilities
+### Part 3 - Linked List Utilities
 
 Data structure functions for manipulating singly linked lists using `t_list`:
 
