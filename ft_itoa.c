@@ -9,7 +9,7 @@ static int	gen_len(int n)
 		len = 1;
 	while (n != 0)
 	{
-		n / 10;
+		n /= 10;
 		len++;
 	}
 	return (len);

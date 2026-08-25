@@ -42,6 +42,23 @@ static char	*word_splitter(const char *s, char c)
 	return (word);
 }
 
+static char	**free_all(char **ptr, int j)
+{
+	while (j > 0)
+	{
+		j--;
+		free(ptr[j]);
+	}
+	free(ptr);
+	return (NULL);
+}
+
+static void	skip_delim(const char *s, char c, int *i)
+{
+	while (s[*i] && s[*i] == c)
+		(*i)++;
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**ptr;
@@ -57,15 +74,15 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	while (s[i])
 	{
-		if (s[i] != c)
-		{
-			ptr[j] = word_splitter(&s[i], c);
-			while (s[i] && s[i] != c)
-				i++;
-			j++;
-		}
-		else
+		skip_delim(s, c, &i);
+		if (!s[i])
+			break ;
+		ptr[j] = word_splitter(&s[i], c);
+		if (!ptr[j])
+			return (free_all(ptr, j));
+		while (s[i] && s[i] != c)
 			i++;
+		j++;
 	}
 	ptr[j] = NULL;
 	return (ptr);
