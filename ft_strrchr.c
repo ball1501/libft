@@ -4,12 +4,12 @@ char	*ft_strrchr(const char *s, int c)
 {
 	size_t	len;
 
-	len = ft_strlen(s) + 1;
-	while (len > 0)
+	len = ft_strlen(s);
+	while (len >= 0)
 	{
-		len--;
-		if (s[len] == (char)c)
+		if ((unsigned char)s[len] == (unsigned char)c)
 			return ((char *)&s[len]);
+		len--;
 	}
 	return (NULL);
 }
