@@ -2,4 +2,4 @@ a.out
 *.o
 *.a
 *.DS_Store
-libft_tester/
+libftTester/
