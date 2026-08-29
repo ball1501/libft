@@ -23,10 +23,9 @@ char	*ft_itoa(int n)
 
 	num = n;
 	len = gen_len(n);
-	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	ptr = (char *)ft_calloc(len + 1, sizeof(char));
 	if (!ptr)
 		return (NULL);
-	ptr[len] = '\0';
 	if (n == 0)
 		ptr[0] = '0';
 	if (n < 0)
