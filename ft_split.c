@@ -1,89 +1,71 @@
 #include "libft.h"
 
-static int	count_words(const char *s, char c)
+static size_t	count_words(char const *s, char c)
 {
-	int	i;
-	int	word;
+	size_t	count;
+	size_t	in_word;
 
-	i = 0;
-	word = 0;
-	while (s[i])
+	count = 0;
+	in_word = 0;
+	while (*s)
 	{
-		if (s[i] != c)
+		if (*s != c && in_word == 0)
 		{
-			word++;
-			while (s[i] && s[i] != c)
-				i++;
+			in_word = 1;
+			count++;
 		}
-		else
-			i++;
+		else if (*s == c)
+			in_word = 0;
+		s++;
 	}
-	return (word);
+	return (count);
 }
 
-static char	*word_splitter(const char *s, char c)
+static void	free_all(char **lst, size_t i)
+{
+	while (i > 0)
+	{
+		i--;
+		free(lst[i]);
+	}
+	free(lst);
+}
+
+static char	*next_word(char const **s, char c)
 {
 	char	*word;
-	int		i;
+	size_t	len;
 
-	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	word = (char *) malloc(sizeof(char) * (i + 1));
-	if (!word)
-		return (NULL);
-	i = 0;
-	while (s[i] && s[i] != c)
-	{
-		word[i] = s[i];
-		i++;
-	}
-	word[i] = '\0';
+	len = 0;
+	while ((*s)[len] && (*s)[len] != c)
+		len++;
+	word = ft_substr(*s, 0, len);
+	*s += len;
 	return (word);
-}
-
-static char	**free_all(char **ptr, int j)
-{
-	while (j > 0)
-	{
-		j--;
-		free(ptr[j]);
-	}
-	free(ptr);
-	return (NULL);
-}
-
-static void	skip_delim(const char *s, char c, int *i)
-{
-	while (s[*i] && s[*i] == c)
-		(*i)++;
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**ptr;
-	int		i;
-	int		j;
+	char	**lst;
+	size_t	i;
 
 	if (!s)
 		return (NULL);
-	ptr = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
-	if (!ptr)
+	lst = (char **)ft_calloc(count_words(s, c) + 1, sizeof(char *));
+	if (!lst)
 		return (NULL);
 	i = 0;
-	j = 0;
-	while (s[i])
+	while (*s)
 	{
-		skip_delim(s, c, &i);
-		if (!s[i])
-			break ;
-		ptr[j] = word_splitter(&s[i], c);
-		if (!ptr[j])
-			return (free_all(ptr, j));
-		while (s[i] && s[i] != c)
+		if (*s != c)
+		{
+			lst[i] = next_word(&s, c);
+			if (!lst[i])
+				return (free_all(lst, i), NULL);
 			i++;
-		j++;
+		}
+		else
+			s++;
 	}
-	ptr[j] = NULL;
-	return (ptr);
+	return (lst);
 }
