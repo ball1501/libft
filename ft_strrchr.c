@@ -6,7 +6,7 @@
 /*   By: wngamkri <wngamkri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 16:31:54 by wngamkri          #+#    #+#             */
-/*   Updated: 2026/08/29 17:44:18 by wngamkri         ###   ########.fr       */
+/*   Updated: 2026/09/01 19:26:03 by wngamkri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*last;
-	int		i;
+	char		*last;
+	size_t		i;
 
 	last = NULL;
 	i = 0;
