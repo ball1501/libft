@@ -17,7 +17,6 @@ The goal is to deeply understand C fundamentals, memory management, string manip
 The library is compiled using `make`. You can use the following commands:
 
 * `make` or `make all`: Compiles the mandatory part and creates `libft.a`.
-* `make bonus`: Compiles both mandatory and bonus functions (linked list utilities) into `libft.a`.
 * `make clean`: Removes all compiled object (`.o`) files.
 * `make fclean`: Removes object files and the generated `libft.a` library file.
 * `make re`: Performs `fclean` and recompiles everything from scratch.
