@@ -15,7 +15,11 @@
 void	ft_bzero(void *s, size_t n)
 {
 	unsigned char	*p;
+<<<<<<< HEAD
+	size_t			i;
+=======
 	size_t	i;
+>>>>>>> d03270e08dba5aae43e794737259f8576a99b6f0
 
 	p = (unsigned char *)s;
 	i = 0;

@@ -38,7 +38,11 @@ int	ft_atoi(const char *str)
 	}
 	while (ft_isdigit(str[i]))
 	{
+<<<<<<< HEAD
+		sum = (sum * 10) + (str[i] - '0');
+=======
 		sum  = (sum * 10) + (str[i] - '0');
+>>>>>>> d03270e08dba5aae43e794737259f8576a99b6f0
 		i++;
 	}
 	return ((int)(sum * sign));

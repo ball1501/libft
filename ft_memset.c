@@ -15,7 +15,11 @@
 void	*ft_memset(void *b, int c, size_t len)
 {
 	unsigned char	*p;
+<<<<<<< HEAD
+	size_t			i;
+=======
 	size_t	i;
+>>>>>>> d03270e08dba5aae43e794737259f8576a99b6f0
 
 	p = (unsigned char *)b;
 	i = 0;

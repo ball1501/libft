@@ -12,10 +12,17 @@
 
 #include "libft.h"
 
+<<<<<<< HEAD
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	const unsigned char	*ptr;
+	size_t				i;
+=======
 void *ft_memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	*ptr;
 	size_t	i;
+>>>>>>> d03270e08dba5aae43e794737259f8576a99b6f0
 
 	ptr = (const unsigned char *)s;
 	i = 0;
